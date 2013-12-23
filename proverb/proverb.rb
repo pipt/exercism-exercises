@@ -18,10 +18,6 @@ private
   end
 
   def footer
-    "And all for the want of a #{footer_item}."
-  end
-
-  def footer_item
-    "#{qualifier} #{chain.first}".strip
+    "And all for the want of a #{qualifier} #{chain.first}.".squeeze(" ")
   end
 end

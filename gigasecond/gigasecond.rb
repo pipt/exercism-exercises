@@ -1,14 +1,14 @@
 class Gigasecond
-  GIGASECOND_IN_DAYS = 1_000_000_000 / (60 * 60 * 24)
+  GIGASECOND = 1_000_000_000
 
   def initialize(start_date)
-    @start_date = start_date
+    @start_time = start_date.to_time
   end
 
   def date
-    start_date + GIGASECOND_IN_DAYS
+    (start_time + GIGASECOND).to_date
   end
 
 private
-  attr_reader :start_date
+  attr_reader :start_time
 end

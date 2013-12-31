@@ -4,7 +4,7 @@ class Anagram
   end
 
   def match(words)
-    prune_identical_words(words).select(&method(:anagram?))
+    prune_identical_words(words).select(&method(:same_letters?))
   end
 
 private
@@ -14,7 +14,7 @@ private
     words.delete_if { |possible_match| possible_match.downcase == word }
   end
 
-  def anagram?(possible_match)
+  def same_letters?(possible_match)
     possible_match.downcase.chars.sort == word.chars.sort
   end
 end

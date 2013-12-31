@@ -5,6 +5,7 @@ class School
 
   def add(student, grade)
     grades[grade].add(student)
+    self
   end
 
   def grade(grade_number)
@@ -12,14 +13,14 @@ class School
   end
 
   def db
-    grades.inject({}) { |acc, (grade_number, grade)| 
-      acc.merge(grade_number => grade.db)
+    grades.each_with_object({}) { |(grade_number, grade), hash|
+      hash[grade_number] = grade.db
     }
   end
 
   def sort
-    grades.sort.inject({}) { |acc, (grade_number, grade)|
-      acc.merge(grade_number => grade.sort)
+    grades.sort.each_with_object({}) { |(grade_number, grade), hash|
+      hash[grade_number] = grade.sort
     }
   end
 

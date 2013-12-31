@@ -7,10 +7,8 @@ module RomanNumerals
   def to_roman
     remaining = self
     NUMERAL_GROUPS.each_with_object("") { |(numeral_group, value), output|
-      while remaining >= value
-        remaining -= value
-        output << numeral_group
-      end
+      ocurrences, remaining = remaining.divmod(value)
+      output << numeral_group * ocurrences
     }
   end
 end
